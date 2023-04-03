@@ -1,0 +1,59 @@
+{
+  "name": "nodejs-test-transactions",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": ".build/index.mjs",
+  "files": [
+    ".build/**/*"
+  ],
+  "scripts": {
+    "start": "npm run build && node build/index.js",
+    "build": "rimraf ./build && tsc && tscp",
+    "start:dev": "tsx watch src/index.ts input.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StanislavkoP/nodejs-test-transactions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StanislavkoP/nodejs-test-transactions/issues"
+  },
+  "homepage": "https://github.com/StanislavkoP/nodejs-test-transactions#readme",
+  "devDependencies": {
+    "@tsconfig/node18": "^1.0.1",
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint": "^8.37.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^2.8.7",
+    "prettier-standard": "^16.4.1",
+    "nodemon": "^2.0.22",
+    "rimraf": "^4.4.1",
+    "ts-node": "^10.9.1",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "@types/dinero.js": "^1.9.0",
+    "currency.js": "^2.0.4",
+    "date-fns": "^2.29.3",
+    "dinero.js": "^1.9.1",
+    "got": "^12.6.0"
+  },
+  "engines": {
+    "node": ">=v18.15.0"
+  }
+}
