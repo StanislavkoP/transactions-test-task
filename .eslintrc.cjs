@@ -18,9 +18,12 @@ module.exports = {
   plugins: ['@typescript-eslint', 'import'],
   rules: {
     'no-console': 'off',
+    'no-restricted-syntax': 'off',
+    'class-methods-use-this': 'off',
+    'import/prefer-default-export': 'off',
     eqeqeq: 2, // error
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
-    // e.g. "@typescript-eslint/explicit-function-return-type": "off",
+    '@typescript-eslint/naming-convention': 'off',
     'newline-per-chained-call': 'error',
     '@typescript-eslint/space-before-function-paren': 'off',
     '@typescript-eslint/comma-dangle': 'off',
@@ -42,7 +45,7 @@ module.exports = {
         varsIgnorePattern: '^_', // https://github.com/typescript-eslint/typescript-eslint/issues/1054
       },
     ],
-    '@typescript-eslint/no-explicit-any': ['error'],
+    '@typescript-eslint/no-explicit-any': ['off'],
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/no-use-before-define': ['error', { functions: false, classes: true }],
     '@typescript-eslint/no-shadow': ['warn'],
