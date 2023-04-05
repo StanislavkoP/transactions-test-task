@@ -1,16 +1,18 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
-    "module": "esnext",
-    "baseUrl": "src",
+    "outDir": "build",
+    "rootDir": "src",
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es5", "es6"],
+    "allowJs": true,
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "allowJs": false,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-
     "declaration": true,
-    "emitDeclarationOnly": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noFallthroughCasesInSwitch": true,
@@ -24,10 +26,8 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "stripInternal": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "paths": {
-      //      "logform": ["src/logform-custom.js"]
-    }
+    "ignoreDeprecations": "5.0"
   },
-  "exclude": ["node_modules", ".build"]
+  "include": ["src","src/**/*.json"],
+  "exclude": ["node_modules", "build"]
 }

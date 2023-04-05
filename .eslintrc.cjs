@@ -1,6 +1,5 @@
 module.exports = {
   env: {
-    browser: true,
     es2021: true,
   },
   extends: [
@@ -9,6 +8,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
+  ignorePatterns: ['build'],
   overrides: [],
   parserOptions: {
     project: ['./tsconfig.json'],
@@ -21,6 +21,7 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'class-methods-use-this': 'off',
     'import/prefer-default-export': 'off',
+    'no-underscore-dangle': 'off',
     eqeqeq: 2, // error
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     '@typescript-eslint/naming-convention': 'off',
