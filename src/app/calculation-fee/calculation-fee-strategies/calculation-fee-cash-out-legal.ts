@@ -11,8 +11,8 @@ export class CalculationFeeCashOutLegal {
   calculate(transaction: ITransaction) {
     const commission = (transaction.operation.amount * this.config.percents) / 100
 
-    if (commission < this.config.min) {
-      return this.config.min
+    if (commission < this.config.minAmount) {
+      return this.config.minAmount
     }
 
     return commission

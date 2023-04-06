@@ -11,7 +11,7 @@ export class CommissionFeeConfigCashOutLegalEntity {
     return this.config.percents
   }
 
-  get min() {
+  get minAmount() {
     return this.config.min.amount
   }
 }
