@@ -1,11 +1,14 @@
 import { AppConfigService } from '../app-config/app-config.service'
+import { HttpClient } from '../../shared/helpers/http-client'
 
-export abstract class CommissionFeeConfigService {
+export class CommissionFeeConfigService {
   protected _apiUrl = AppConfigService.get('COMMISSION_FEE_CONFIG_API_URL')
+
+  protected _httpClient = HttpClient
 
   get apiUrl() {
     if (!this._apiUrl) {
-      throw new Error('Please provide COMMISSION_FEE_CONFIG_API_URL variable in .env')
+      throw new Error('Please provide apiUrl')
     }
 
     return this._apiUrl
