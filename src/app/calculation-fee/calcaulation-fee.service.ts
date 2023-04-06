@@ -22,25 +22,9 @@ export class CalculationFeeService {
 
   async calculateFee(dataFileName: string) {
     const transactions = await this.transactionsService.getAll(dataFileName)
+    const calculationFeeStrategyManager = await this.getCalculationFeeStrategyManager()
 
-    const [commissionFeeConfigCashIn, commissionFeeConfigCashOutLegal, commissionFeeConfigCashOutNatural] =
-      await Promise.all([
-        this.commissionFeeConfigCashInService.getConfig(),
-        this.commissionFeeConfigCashOutLegalService.getConfig(),
-        this.commissionFeeConfigCashOutNaturalService.getConfig(),
-      ])
-
-    const calculationFeeStrategyManager = new CalculationFeeStrategyManager()
-    const strategies = [
-      [CALCULATION_FEE_TYPE_LIST.cash_in, new CalculationFeeCashIn(commissionFeeConfigCashIn)],
-      [CALCULATION_FEE_TYPE_LIST.cash_out_legal, new CalculationFeeCashOutLegal(commissionFeeConfigCashOutLegal)],
-      [CALCULATION_FEE_TYPE_LIST.cash_out_natural, new CalculationFeeCashOutNatural(commissionFeeConfigCashOutNatural)],
-    ] as const
-
-    for (const [strategyName, strategy] of strategies) {
-      calculationFeeStrategyManager.setStrategy(strategyName, strategy)
-    }
-
+    // Calculation fee of transactions
     const result: string[] = []
 
     for (const transaction of transactions) {
@@ -53,5 +37,32 @@ export class CalculationFeeService {
     }
 
     return result
+  }
+
+  async getCalculationFeeStrategyManager() {
+    const [commissionFeeConfigCashIn, commissionFeeConfigCashOutLegal, commissionFeeConfigCashOutNatural] =
+      await this.getFeeConfigs()
+
+    // Set up calculation fee strategies
+    const calculationFeeStrategyManager = new CalculationFeeStrategyManager()
+    const strategies = [
+      [CALCULATION_FEE_TYPE_LIST.cash_in, new CalculationFeeCashIn(commissionFeeConfigCashIn)],
+      [CALCULATION_FEE_TYPE_LIST.cash_out_legal, new CalculationFeeCashOutLegal(commissionFeeConfigCashOutLegal)],
+      [CALCULATION_FEE_TYPE_LIST.cash_out_natural, new CalculationFeeCashOutNatural(commissionFeeConfigCashOutNatural)],
+    ] as const
+
+    for (const [strategyName, strategy] of strategies) {
+      calculationFeeStrategyManager.setStrategy(strategyName, strategy)
+    }
+
+    return calculationFeeStrategyManager
+  }
+
+  getFeeConfigs() {
+    return Promise.all([
+      this.commissionFeeConfigCashInService.getConfig(),
+      this.commissionFeeConfigCashOutLegalService.getConfig(),
+      this.commissionFeeConfigCashOutNaturalService.getConfig(),
+    ])
   }
 }
