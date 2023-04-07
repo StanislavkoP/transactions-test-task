@@ -43,6 +43,12 @@ Install dependencies if you haven't done that before
 npm i
 ```
 
+Build project
+
+```npm
+npm run build
+```
+
 Navigate to the build folder using cd build
 
 ```shell
@@ -52,7 +58,6 @@ cd build
 Run app
 
 ```npm
-
 node index.js input.json
 ```
 
