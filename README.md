@@ -63,3 +63,11 @@ node index.js input.json
 
 > Note: `input.json` is required for calculation fee.
 > </br>`input.json` is the file name with transactions data
+
+### Run tests
+
+Use
+
+```npm
+npm run test
+```
