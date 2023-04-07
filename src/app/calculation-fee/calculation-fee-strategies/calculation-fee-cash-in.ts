@@ -1,4 +1,4 @@
-import { CommissionFeeConfigCashInEntity } from '../../commission-fee/entities/comission-fee-cash-in-configuration.entity'
+import { CommissionFeeConfigCashInEntity } from '../../commission-fee/entities/comission-fee-configuration-cash-in.entity'
 import { ITransaction } from '../../../shared/types/transaction'
 
 export class CalculationFeeCashIn {

@@ -14,7 +14,7 @@ export const CALCULATION_FEE_TYPE_LIST = {
 type CalculationFeeTypes = ValueOf<typeof CALCULATION_FEE_TYPE_LIST>
 
 export class CalculationFeeStrategyManager {
-  strategies: Record<
+  _strategies: Record<
     CalculationFeeTypes,
     CalculationFeeCashIn | CalculationFeeCashOutLegal | CalculationFeeCashOutNatural | null
   > = {
@@ -23,21 +23,25 @@ export class CalculationFeeStrategyManager {
     [CALCULATION_FEE_TYPE_LIST.cash_out_natural]: null,
   }
 
+  get strategies() {
+    return this._strategies
+  }
+
   setStrategy(
     name: CalculationFeeTypes,
     strategy: CalculationFeeCashIn | CalculationFeeCashOutLegal | CalculationFeeCashOutNatural,
   ) {
-    this.strategies[name] = strategy
+    this._strategies[name] = strategy
   }
 
   getStrategy(name: CalculationFeeTypes) {
-    const strategy = this.strategies[name]
+    const strategy = this._strategies[name]
 
     if (strategy === null) {
       throw new Error('Calculation fee strategy not set up')
     }
 
-    if (!(name in this.strategies)) {
+    if (!(name in this._strategies)) {
       throw new Error('Calculation fee strategy don`t exists')
     }
 
@@ -59,6 +63,6 @@ export class CalculationFeeStrategyManager {
       return this.getStrategy(CALCULATION_FEE_TYPE_LIST.cash_out_natural)
     }
 
-    throw new Error('Calculation fee strategy has not been found')
+    throw new Error(`Calculation fee strategy has not been found for ${JSON.stringify(transaction)}`)
   }
 }

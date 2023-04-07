@@ -1,5 +1,5 @@
-import { axios } from '../../configs/axios'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { axios } from '../../configs/axios'
 
 type Response<T = any, D = any> = AxiosResponse<T, D>
 type HttpClientRequestConfig<D = any> = AxiosRequestConfig<D>

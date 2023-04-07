@@ -1,5 +1,5 @@
-import { CalculationFeeService } from './calcaulation-fee.service'
-import { outputHelper } from '../../shared/helpers/output-helper'
+import { CalculationFeeService } from './calculation-fee.service'
+import { outputHelper } from '../../shared/helpers/output-helper/output-helper'
 
 export class CalculationFeeController {
   calculateFeeService: CalculationFeeService

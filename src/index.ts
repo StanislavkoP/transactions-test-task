@@ -1,7 +1,7 @@
 import { argv } from 'node:process'
 import { AppController } from './app/app.controller'
 
-function bootstrap() {
+export function bootstrap() {
   const [, , dataFileName] = argv
 
   if (!dataFileName) {

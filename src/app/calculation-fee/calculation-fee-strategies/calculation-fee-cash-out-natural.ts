@@ -1,6 +1,6 @@
 import { CommissionFeeConfigCashOutNaturalEntity } from '../../commission-fee/entities/comission-fee-configuration-cash-out-natural.entity'
-import { dateHelper } from '../../../shared/helpers/date-helper'
 import { ITransaction } from '../../../shared/types/transaction'
+import { dateHelper } from '../../../shared/helpers/date-helper/date-helper'
 
 export class CalculationFeeCashOutNatural {
   private readonly config: CommissionFeeConfigCashOutNaturalEntity
@@ -16,15 +16,15 @@ export class CalculationFeeCashOutNatural {
     return this.userTransactions.get(userId) || []
   }
 
+  setTransactionToUser(transaction: ITransaction) {
+    const userTransactions = this.getUserTransactions(transaction.user_id)
+    userTransactions.unshift(transaction)
+  }
+
   prepareUserTransactionsIfNotExists(userId: ITransaction['user_id']) {
     if (!this.userTransactions.has(userId)) {
       this.userTransactions.set(userId, [])
     }
-  }
-
-  attachTransactionToUser(transaction: ITransaction) {
-    const userTransactions = this.getUserTransactions(transaction.user_id)
-    userTransactions.unshift(transaction)
   }
 
   calculate(transaction: ITransaction) {
@@ -44,7 +44,7 @@ export class CalculationFeeCashOutNatural {
     amountLeftForFree = amountLeftForFree > 0 ? amountLeftForFree : 0
     let transactionCommission = 0
 
-    this.attachTransactionToUser(transaction)
+    this.setTransactionToUser(transaction)
 
     if (isExceededAmount) {
       transactionCommission = ((operation.amount - amountLeftForFree) * percents) / 100

@@ -9,7 +9,7 @@ import { CalculationFeeCashOutLegal } from './calculation-fee-strategies/calcula
 import { CommissionFeeConfigCashInService } from '../commission-fee/commission-fee-configuration-cash-in.service'
 import { CommissionFeeConfigCashOutLegalService } from '../commission-fee/commission-fee-configuration-cash-out-legal.service'
 import { CommissionFeeConfigCashOutNaturalService } from '../commission-fee/commission-fee-configuration-cash-out-natural.service'
-import { currencyHelper } from '../../shared/helpers/currency-helper'
+import { currencyHelper } from '../../shared/helpers/currency-helper/currency-helper'
 
 export class CalculationFeeService {
   transactionsService = new TransactionsService()

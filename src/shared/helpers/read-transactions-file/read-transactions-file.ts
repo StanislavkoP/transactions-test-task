@@ -1,7 +1,7 @@
 import fsSync from 'fs'
 import fs from 'fs/promises'
 import path from 'node:path'
-import { ITransaction } from '../types/transaction'
+import { ITransaction } from '../../types/transaction'
 
 export async function readTransactionsFile(name: string): Promise<ITransaction[]> {
   const filePath = path.join(__dirname, `../assets/${name}`)
