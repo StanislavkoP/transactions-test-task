@@ -33,7 +33,7 @@ COMMISSION_FEE_CONFIG_API_URL=https://developers.com/tasks/api
 
 To run the project in development mode, use the command:
 
-```npm
+```shell
 npm run start input.json
 ```
 
@@ -44,13 +44,13 @@ npm run start input.json
 
 Install dependencies if you haven't done that before
 
-```npm
+```shell
 npm i
 ```
 
 Build project
 
-```npm
+```shell
 npm run build
 ```
 
@@ -62,7 +62,7 @@ cd build
 
 Run app
 
-```npm
+```shell
 node index.js input.json
 ```
 
@@ -73,6 +73,6 @@ node index.js input.json
 
 Use
 
-```npm
+```shell
 npm run test
 ```
