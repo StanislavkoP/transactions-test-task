@@ -53,8 +53,10 @@ describe('CalculationFeeStrategyManager', () => {
 
   beforeAll(() => {
     for (const strategyName in strategies) {
-      const strategy = strategies[strategyName]
-      calculationFeeStrategyManager.setStrategy(strategyName, strategy)
+      if (strategyName in strategies) {
+        const strategy = strategies[strategyName]
+        calculationFeeStrategyManager.setStrategy(strategyName, strategy)
+      }
     }
   })
 
