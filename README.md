@@ -5,10 +5,15 @@
 - Clone this repository using
 
 ```shell
-  git clone https://github.com/your-username/your-repo-name.git
+  git clone https://github.com/StanislavkoP/transactions-test-task.git
 ```
 
-- Navigate to the project directory using cd your-repo-name
+- Navigate to the project directory
+
+```shell
+ cd transactions-test-task
+```
+
 - Install dependencies using `npm install`
 - Copy the `.env.example` file and rename it to `.env` using the following command:
 
@@ -49,7 +54,7 @@ Build project
 npm run build
 ```
 
-Navigate to the build folder using cd build
+Navigate to the build folder
 
 ```shell
 cd build
