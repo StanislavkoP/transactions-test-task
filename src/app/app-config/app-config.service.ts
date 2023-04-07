@@ -1,11 +1,15 @@
 import process from 'process'
-import { config } from 'dotenv'
+import dotenv from 'dotenv'
 
-config()
+dotenv.config()
+
+const configs = {
+  COMMISSION_FEE_CONFIG_API_URL: process.env.COMMISSION_FEE_CONFIG_API_URL,
+}
 
 export class _AppConfigService {
-  get<T = any>(name): T {
-    return process.env[name] as T
+  get<T = any>(name: keyof typeof configs): T {
+    return configs[name] as T
   }
 }
 
