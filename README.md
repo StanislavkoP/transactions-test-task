@@ -8,14 +8,13 @@
   git clone https://github.com/your-username/your-repo-name.git
 ```
 
-````
 - Navigate to the project directory using cd your-repo-name
 - Install dependencies using `npm install`
 - Copy the `.env.example` file and rename it to `.env` using the following command:
 
-- ```shell
-  cp .env.example .env
-````
+```shell
+ cp .env.example .env
+```
 
 - Set up the `COMMISSION_FEE_CONFIG_API_URL` variable in your `.env` file.
 
