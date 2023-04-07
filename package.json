@@ -7,7 +7,7 @@
     "build/"
   ],
   "scripts": {
-    "build": "npm run lint && babel src/ --out-dir build --extensions '.ts,.tsx' --copy-files 'src/**/*.json' --source-maps inline",
+    "build": "npm run lint && babel src --out-dir build --extensions .ts,.tsx --source-maps inline --copy-files",
     "tsc": "tsc --project tsconfig.build.json",
     "clean": "rimraf ./build",
     "start": "tsx watch src/index.ts",
