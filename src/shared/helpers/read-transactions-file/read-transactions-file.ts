@@ -4,7 +4,7 @@ import path from 'node:path'
 import { ITransaction } from '../../types/transaction'
 
 export async function readTransactionsFile(name: string): Promise<ITransaction[]> {
-  const filePath = path.join(__dirname, `../assets/${name}`)
+  const filePath = path.join(__dirname, `../../assets/${name}`)
   const isFileExists = fsSync.existsSync(filePath)
 
   if (!isFileExists) {
