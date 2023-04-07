@@ -7,10 +7,9 @@
     "build/"
   ],
   "scripts": {
-    "start": "npm run build && node build/index.js input.json",
     "build": "npm run clean && npm run lint && tsc --project tsconfig.build.json",
     "clean": "rm -r ./build || true",
-    "start:dev": "tsx watch src/index.ts",
+    "start": "tsx watch src/index.ts",
     "lint": "eslint --ext .ts --fix src/**/*.ts",
     "test": "jest"
   },
