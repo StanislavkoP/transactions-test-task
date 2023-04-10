@@ -1,14 +1,16 @@
 import { CommissionFeeConfigCashOutNaturalEntity } from '../../commission-fee/entities/comission-fee-configuration-cash-out-natural.entity'
 import { ITransaction } from '../../../shared/types/transaction'
 import { dateHelper } from '../../../shared/helpers/date-helper/date-helper'
+import { CalculationFeeBase } from './calculation-fee-base'
 
-export class CalculationFeeCashOutNatural {
+export class CalculationFeeCashOutNatural extends CalculationFeeBase {
   private readonly config: CommissionFeeConfigCashOutNaturalEntity
 
   // Collect transactions in the array descending by transaction date
   private userTransactions: Map<ITransaction['user_id'], Array<ITransaction>> = new Map()
 
   constructor(config: CommissionFeeConfigCashOutNaturalEntity) {
+    super()
     this.config = config
   }
 
@@ -28,6 +30,7 @@ export class CalculationFeeCashOutNatural {
   }
 
   calculate(transaction: ITransaction) {
+    this.isCurrencySupported(transaction.operation.currency)
     const { user_id, operation } = transaction
 
     this.prepareUserTransactionsIfNotExists(user_id)

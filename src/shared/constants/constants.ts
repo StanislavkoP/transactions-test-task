@@ -1,3 +1,4 @@
+
 export const USER_TYPE_LIST = {
   natural: 'natural',
   juridical: 'juridical',
