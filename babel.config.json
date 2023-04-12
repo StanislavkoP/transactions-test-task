@@ -1,5 +1,4 @@
 {
   "presets": [["@babel/preset-env", { "targets": { "node": "current" } }], "@babel/preset-typescript"],
-  "plugins": ["inline-dotenv"],
-  "ignore": ["**/*.test.js", "**/*.test.ts"]
+  "plugins": ["inline-dotenv"]
 }
