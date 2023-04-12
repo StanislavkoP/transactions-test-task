@@ -1,6 +1,12 @@
 import { CommissionFeeConfigService } from './commission-fee-configuration.service'
 
-process.env.COMMISSION_FEE_CONFIG_API_URL = 'fake-api.com'
+jest.mock('../app-config/app-config.service', () => {
+  return {
+    AppConfigService: {
+      get: jest.fn().mockReturnValue('fake-api.com'),
+    },
+  }
+})
 
 describe('CommissionFeeConfigService', () => {
   const commissionFeeConfigService = new CommissionFeeConfigService()

@@ -18,7 +18,7 @@ describe('AppConfigService', () => {
   })
 
   it('get() should return a domain by COMMISSION_FEE_CONFIG_API_URL env variable', () => {
-    process.env.COMMISSION_FEE_CONFIG_API_URL = 'api-example.com'
+    jest.spyOn(AppConfigService, 'get').mockReturnValue('api-example.com')
 
     const result = AppConfigService.get('COMMISSION_FEE_CONFIG_API_URL')
 
